@@ -1,0 +1,56 @@
+
+<div *ngIf="etudiant">
+    <h2><span>Etudiant</span> {{etudiant.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Cin</span></dt>
+        <dd>
+            <span>{{etudiant.cin}}</span>
+        </dd>
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{etudiant.name}}</span>
+        </dd>
+        <dt><span>Lastname</span></dt>
+        <dd>
+            <span>{{etudiant.lastname}}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+            <span>{{etudiant.email}}</span>
+        </dd>
+        <dt><span>Dn</span></dt>
+        <dd>
+            <span>{{etudiant.dn | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Sexe</span></dt>
+        <dd>
+            <span>{{etudiant.sexe}}</span>
+        </dd>
+        <dt><span>Moyenne</span></dt>
+        <dd>
+            <span>{{etudiant.moyenne}}</span>
+        </dd>
+        <dt><span>Etudier</span></dt>
+        <dd>
+            <div *ngIf="etudiant.etudier">
+                <a [routerLink]="['/section', etudiant.etudier?.id]">{{etudiant.etudier?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'etudiant/'+ etudiant.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

@@ -42,7 +42,7 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://localhost:3306/SOA?useUnicode=true&characterEncoding=utf8&useSSL=false
         username: root
-        password:
+        password: rafanadal
         hikari:
             data-source-properties:
                 cachePrepStmts: true
@@ -59,12 +59,20 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: true
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+        host: smtp.gmail.com
+        port: 587
+        username: ahmed.kessentini@etudiant-fst.utm.tn
+        password: 123456789ahmed
+        protocol: smtp
+        tls: true
+        auth: true
+        from: ahmed.kessentini@etudiant-fst.utm.tn
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.gmail.com
     messages:
-        cache-seconds: 1
+        cache-seconds: 5
     thymeleaf:
         cache: false
     zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies

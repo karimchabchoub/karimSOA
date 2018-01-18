@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "not",
+            "fieldType": "Float"
+        }
+    ],
+    "changelogDate": "20180117112649",
+    "entityTableName": "notee",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

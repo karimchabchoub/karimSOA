@@ -1,0 +1,71 @@
+<div>
+    <h2>
+        <span>Absences</span>
+        <button class="btn btn-primary float-right jh-create-entity create-absences" [routerLink]="['/', { outlets: { popup: ['absences-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Absences
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="absences">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Nb Absences</span></th>
+            <th><span>Etudiant</span></th>
+            <th><span>Matiére</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let absence of absences ;trackBy: trackId">
+                <td><a [routerLink]="['../absences', absence.id ]">{{absence.id}}</a></td>
+                <td>{{absence.nbAbsences}}</td>
+                <td>
+                    <div *ngIf="absence.possede">
+                        <a [routerLink]="['../etudiant', absence.possede?.id ]" >{{absence.possede?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="absence.associer">
+                        <a [routerLink]="['../matiere', absence.associer?.id ]" >{{absence.associer?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../absences', absences.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'absences/'+ absences.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'absences/'+ absences.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    </div>

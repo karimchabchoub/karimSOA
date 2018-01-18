@@ -1,0 +1,43 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "enseigner",
+            "otherEntityName": "matiere",
+            "otherEntityRelationshipName": "enseignant"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "cin",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "sexe",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180117015801",
+    "entityTableName": "enseignant",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

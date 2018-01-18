@@ -1,0 +1,55 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "etudier",
+            "otherEntityName": "section",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "etudiant"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "associer",
+            "otherEntityName": "note",
+            "otherEntityRelationshipName": "etudiant"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "cin",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastname",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "sexe",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "moyenne",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180117015800",
+    "entityTableName": "etudiant",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false
+}

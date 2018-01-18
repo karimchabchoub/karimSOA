@@ -18,6 +18,9 @@
                 <th jhiSortBy="createdDate"><span>Created Date</span> <span class="fa fa-sort"></span></th>
                 <th jhiSortBy="lastModifiedBy"><span>Last Modified By</span> <span class="fa fa-sort"></span></th>
                 <th jhiSortBy="lastModifiedDate"><span>Last Modified Date</span> <span class="fa fa-sort"></span></th>
+                
+                <th><span>section</span></th>
+                <th><span>Matiere</span></th>
                 <th></th>
             </tr>
             </thead>
@@ -35,12 +38,22 @@
                 
                 <td>
                     <div *ngFor="let authority of user.authorities">
-                        <span class="badge badge-info">{{ authority }}</span>
+                    
+                        <span class="badge badge-info">{{ authority  }}</span>
+                        
                     </div>
                 </td>
                 <td>{{user.createdDate | date:'dd/MM/yy HH:mm'}}</td>
                 <td>{{user.lastModifiedBy}}</td>
                 <td>{{user.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</td>
+                <td>
+                	<div *ngFor="let authority of user.authorities">
+                    
+                        <span class="badge badge-info">{{ authority== "ROLE_ETUDIANT"   }}</span>
+                        
+                    </div>
+                </td>
+                <td></td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

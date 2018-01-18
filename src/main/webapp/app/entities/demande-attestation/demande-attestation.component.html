@@ -1,0 +1,69 @@
+<div>
+    <h2>
+        <span>Demande Attestation</span>
+        <button class="btn btn-primary float-right jh-create-entity create-demande-attestation" [routerLink]="['/', { outlets: { popup: ['demande-attestation-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Demande Attestation
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="demandeAttestations">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Name</span></th>
+            <th><span>Lastname</span></th>
+            <th><span>Cause</span></th>
+            <th><span>Signer Par</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let demandeAttestation of demandeAttestations ;trackBy: trackId">
+                <td><a [routerLink]="['../demande-attestation', demandeAttestation.id ]">{{demandeAttestation.id}}</a></td>
+                <td>{{demandeAttestation.name}}</td>
+                <td>{{demandeAttestation.lastname}}</td>
+                <td>{{demandeAttestation.cause}}</td>
+               
+                <td *jhiHasAnyAuthority="'ROLE_ENSEIGNANT'" >
+                    <div *ngIf="demandeAttestation.signerPar">
+                        <a [routerLink]="['../enseignant', demandeAttestation.signerPar?.id ]" >{{demandeAttestation.signerPar?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../demande-attestation', demandeAttestation.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'demande-attestation/'+ demandeAttestation.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'demande-attestation/'+ demandeAttestation.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

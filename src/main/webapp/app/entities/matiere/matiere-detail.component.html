@@ -1,0 +1,42 @@
+
+<div *ngIf="matiere">
+    <h2><span>Matiere</span> {{matiere.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{matiere.name}}</span>
+        </dd>
+        <dt><span>Coeff</span></dt>
+        <dd>
+            <span>{{matiere.coeff}}</span>
+        </dd>
+        <dt><span>Enseignant</span></dt>
+        <dd>
+            <div *ngIf="matiere.enseignant">
+                <a [routerLink]="['/enseignant', matiere.enseignant?.id]">{{matiere.enseignant?.name}}</a>
+            </div>
+        </dd>
+        <dt><span>Section</span></dt>
+        <dd>
+            <div *ngIf="matiere.section">
+                <a [routerLink]="['/section', matiere.section?.id]">{{matiere.section?.name}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'matiere/'+ matiere.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

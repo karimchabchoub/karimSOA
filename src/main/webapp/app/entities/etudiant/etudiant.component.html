@@ -1,0 +1,76 @@
+<div>
+    <h2>
+        <span>Etudiants</span>
+        <button class="btn btn-primary float-right jh-create-entity create-etudiant" [routerLink]="['/', { outlets: { popup: ['etudiant-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Etudiant
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="etudiants">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Cin</span></th>
+            <th><span>Name</span></th>
+            <th><span>Lastname</span></th>
+            <th><span>Email</span></th>
+            <th><span>Dn</span></th>
+            <th><span>Sexe</span></th>
+            <th><span>Moyenne</span></th>
+            <th><span>Etudier</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let etudiant of etudiants ;trackBy: trackId">
+                <td><a [routerLink]="['../etudiant', etudiant.id ]">{{etudiant.id}}</a></td>
+                <td>{{etudiant.cin}}</td>
+                <td>{{etudiant.name}}</td>
+                <td>{{etudiant.lastname}}</td>
+                <td>{{etudiant.email}}</td>
+                <td>{{etudiant.dn | date:'mediumDate'}}</td>
+                <td>{{etudiant.sexe}}</td>
+                <td>{{etudiant.moyenne}}</td>
+                <td>
+                    <div *ngIf="etudiant.etudier">
+                        <a [routerLink]="['../section', etudiant.etudier?.id ]" >{{etudiant.etudier?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../etudiant', etudiant.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'etudiant/'+ etudiant.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'etudiant/'+ etudiant.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
